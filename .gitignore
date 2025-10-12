@@ -1,0 +1,8 @@
+# Flutter SDK (ローカルインストール)
+flutter/
+
+# 環境設定
+.envrc
+
+# macOS
+.DS_Store
