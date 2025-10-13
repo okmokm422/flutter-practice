@@ -5,6 +5,7 @@
 
 # brew install
 [direnv]()
+[fvm]()
 
 
 # Flutterのインストール
@@ -48,7 +49,14 @@ flutter --version
 
 # プラットフォームごとの環境構築
 
-開発環境の情報を出力
+## Android Studioのインストール
+
+## Android toolchainのインストール
+
+Android Studio>Settings>Languages & Framgeworks>Android SDK>SDK ToolsでAndroid SDK Command-line Toolsをインストール
+![AndroidStudio画面](img/README/androidtoolchain.png)
+
+## 開発環境の情報を出力
 ```sh
 flutter doctor
 ```
@@ -58,16 +66,82 @@ Doctor summary (to see all details, run flutter doctor -v):
 [✓] Flutter (Channel stable, 3.35.6, on macOS 15.7.1 24G231 darwin-arm64, locale ja-JP)
 [!] Android toolchain - develop for Android devices (Android SDK version 35.0.1)
     ! Some Android licenses not accepted. To resolve this, run: flutter doctor --android-licenses
-[!] Xcode - develop for iOS and macOS (Xcode 26.0.1)
-    ! iOS 26.0 Simulator not installed; this may be necessary for iOS and macOS development.
-      To download and install the platform, open Xcode, select Xcode > Settings > Components,
-      and click the GET button for the required platform.
+[✓] Xcode - develop for iOS and macOS (Xcode 26.0.1)
+[✓] Chrome - develop for the web
+[✓] Android Studio (version 2024.3)
+[✓] VS Code (version 1.104.0)
+[✓] Connected device (2 available)
+[✓] Network resources
 
-      For more information, please visit:
-        https://developer.apple.com/documentation/xcode/installing-additional-simulator-runtimes
+! Doctor found issues in 1 category.
+```
+
+出力のとおり、以下のコマンドを実行する。
+```sh
+flutter doctor --android-licenses
+# 途中、yを2回選択
+```
+
+
+再度`flutter doctor`すると、以下のとおりの出力となり、警告は全て解消した。
+
+```sh
+Doctor summary (to see all details, run flutter doctor -v):
+[✓] Flutter (Channel stable, 3.35.6, on macOS 15.7.1 24G231 darwin-arm64, locale ja-JP)
+[✓] Android toolchain - develop for Android devices (Android SDK version 35.0.1)
+[✓] Xcode - develop for iOS and macOS (Xcode 26.0.1)
 [✓] Chrome - develop for the web
 [✓] Android Studio (version 2024.3)
 [✓] VS Code (version 1.104.0)
 [✓] Connected device (2 available)
 [✓] Network resources
 ```
+
+# fvmによる Flutterのバージョン管理
+
+## fvmのインストール
+fvmのGitHubレポジトリを Homebrewに追加
+```sh
+brew tap leoafarias/fvm
+```
+
+fvmをインストール
+```sh
+brew install fvm
+```
+
+## Flutterのインストール
+インストール可能なFlutterバージョンを出力
+```sh
+fvm releases
+```
+
+3.16.9をインストール
+```sh
+fvm install 3.16.9
+fvm use 3.16.9
+```
+
+バージョンを確認
+```sh
+fvm flutter --version
+fvm dart --version
+```
+
+# Android Studioの設定
+
+## Flutterプロジェクトの作成
+新規プロジェクト作成
+![新規プロジェクト作成](img/README/newflutterproject.png)
+FlutterのSDKを選択
+![FlutterのSDKを選択](img/README/newproject.png)
+プロジェクト名を編集
+![プロジェクト名を編集](img/README/newproject_myapp.png)
+
+## FlutterのSDKを設定
+SettingsからAndroid Studioが参照するFlutter SDKのパスを設定する
+![Flutter SDK Path設定](img/README/fluttersdkpath.png)
+
+## Android Studioでシミュレーターのインストール
+
+- Android, iOSのEmulatorをインストールし、起動できるようにしておく。
