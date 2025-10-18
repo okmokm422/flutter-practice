@@ -128,6 +128,12 @@ fvm flutter --version
 fvm dart --version
 ```
 
+~/.zshrcにエイリアスを登録し、fvmの入力を省略する
+```sh
+#~/.zshrc
+alias flutter="fvm flutter"
+```
+
 # Android Studioの設定
 
 ## Flutterプロジェクトの作成
