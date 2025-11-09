@@ -151,3 +151,9 @@ SettingsからAndroid Studioが参照するFlutter SDKのパスを設定する
 ## Android Studioでシミュレーターのインストール
 
 - Android, iOSのEmulatorをインストールし、起動できるようにしておく。
+
+## .dartの実行方法
+
+```sh
+fvm dart *.dart
+```
