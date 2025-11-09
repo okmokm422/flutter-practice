@@ -22,7 +22,7 @@ class Foo<T> {
 
 }
 
-// ジェネリック関数
+// ジェネリクス関数
 // T?はT型かnullを返すことを示す
 T? firstOrNull<T>(List<T> list) {
     if (list.isEmpty) {
