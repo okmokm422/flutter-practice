@@ -79,9 +79,10 @@ void main() {
       print('Unexpected status code');
   }
 
+  // 式としてのswitch文
   final int statusCode3 = 100000;
   final message = switch ( statusCode3 ) {
-    >= 100 && < 200 => "informational", // >=と=>の間に条件式を記述
+    >= 100 && < 200 => "informational", // statusCode3 >= 100 && < statusCode3 < 200と同じ意味
     >= 200 && < 300 => "successfull",
     >= 300 && < 400 => "redirection",
     >= 400 && < 500 => "client error",
@@ -89,5 +90,40 @@ void main() {
     _ => "Unexpected status code", // _はデフォルトのパターン
   };
   print(message);
+
+  //while文
+  print("================================================");
+  print("while文");
+  final flag = true;
+  while (flag) {
+    print("flag is true");
+    break;
+  }
+
+  // do-while文
+  print("================================================");
+  print("do-while文");
+  int count = 0;
+  do {
+    print("count is $count");
+    count++;
+    if (count == 10) {
+      print("exit loop");
+      break;
+    }
+  } while (flag);
+
+  // breakとcontinue
+  print("================================================");
+  print("breakとcontinue");
+  for (int i = 0; i < 10; ++i) { // i += 1と同じ意味
+    if (i % 2 == 0) {
+      continue; // 偶数の場合はスキップ
+    }
+    if (i > 6) {
+      break; // 7以上の場合はループを抜ける
+    }
+    print("index = $i");
+  }
 
 }
