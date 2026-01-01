@@ -157,3 +157,24 @@ SettingsからAndroid Studioが参照するFlutter SDKのパスを設定する
 ```sh
 fvm dart *.dart
 ```
+
+# Flutterアプリの実行
+
+### Flutterプロジェクトの生成
+
+flutter実験用のフォルダを作成
+
+```sh
+mkdir flutter_dev
+cd flutter_dev
+```
+
+作成したフォルダで、flutter環境の作成
+```sh
+fvm flutter create .
+```
+
+flutterコードの実行
+```sh
+fvm flutter run lib/main.dart
+```
